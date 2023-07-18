@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    
+<meta charset="UTF-8" />
+    
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+<title>Ram fashion store</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="css/fontawesome.min.css" />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="css/templatemo-style.css" />
+    <!--
+	Ram-Fashion Admin CSS Template
+	https://templatemo.com/tm-524-product-admin
+	-->
+  </head>
+  
+<body id="reportsPage">
+    <nav class="navbar navbar-expand-xl">
+      
+<div class="container h-100">
+        <a class="navbar-brand" href="admin.jsf">
+          
+<h1 class="tm-site-title mb-0">Ram Fashion Admin</h1>
+        </a>
+        <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars tm-nav-icon" />
+        </button>
+        
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+<ul class="navbar-nav mx-auto h-100">
+                        
+<li class="nav-item">
+                            <a class="nav-link active" href="admin.jsf">
+                                <i class="fas fa-tachometer-alt" />
+                                Dashboard
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        
+<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-file-alt" />
+                                <span>
+                                    Product  <i class="fas fa-angle-down" />
+                                </span>
+                            </a>
+                            
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="insert.jsf">Insert  </a>
+                                <a class="dropdown-item" href="displayprod.jsf">Display  </a>
+                               
+                            </div>
+                        </li>
+                        
+<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-file-alt" />
+                                <span>
+                                    Category  <i class="fas fa-angle-down"/>
+                                </span>
+                            </a>
+                            
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                               <a class="dropdown-item" href="addcat.jsf">Add category  </a>
+
+                                <a class="dropdown-item" href="dispcat.jsf">Display category </a>
+                               
+                            </div>
+                        </li>
+                        
+<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-file-alt" />
+                                <span>
+                                    Brands  <i class="fas fa-angle-down"/>
+                                </span>
+                            </a>
+                            
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="addbrand.jsf">Add Brand  </a>
+
+                                <a class="dropdown-item" href="dispbrand.jsf">Display brand  </a>
+                               
+                            </div>
+                        </li>
+                        
+                        
+<li class="nav-item">
+                            <a class="nav-link" href="account.jsf">
+                                <i class="far fa-user" />
+                                Accounts
+                            </a>
+                        </li>
+                        
+
+               </ul>
+                    
+<ul class="navbar-nav">
+                        
+<li class="nav-item">
+                            <a class="nav-link d-block" href="login.jsf">
+                                Admin, <b>Logout</b>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+      </div>
+    </nav>
+    
+<div class="container mt-5">
+      
+<div class="row tm-content-row">
+        
+<div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+          
+<div class="tm-bg-primary-dark tm-block tm-block-products">
+            
+<div class="tm-product-table-container">
+              
+<!--<table class="table table-hover tm-table-small tm-product-table">-->
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText class="tm-site-title" value="brands details"/></h1>
+                <h:dataTable border="2" class="table table-hover tm-table-small tm-product-table" value="#{RFJSFBean.get_brands()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="BrandId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.brandId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="BrandName"/>
+                        </f:facet>
+                        <h:outputText value="#{item.brandName}"/>
+                    </h:column>                   
+                  <h:column>
+                         <f:facet name="header">
+                            <h:outputText value="Edit"/>
+                        </f:facet>
+                      <h:commandButton action="#{RFJSFBean.bsrch(item.brandId)}" class="btn btn-primary btn-block text-uppercase mb-3" value="Edit"></h:commandButton>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Delete"/>
+                        </f:facet>
+                        <h:commandButton  action="#{RFJSFBean.deletebrand(item.brandId)}" class="btn btn-primary btn-block text-uppercase mb-3" value="Delete"></h:commandButton>
+                    </h:column>                  
+                </h:dataTable>
+            </h:form>
+        </f:view>
+                      
+<!--                    </td>
+                  </tr>
+                </tbody>
+              </table>-->
+            </div>
+<!--             table container 
+            <a href="add-product.jsf" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
+            <h:commandbutton class="btn btn-primary btn-block text-uppercase">
+              Delete selected products
+            </button>-->
+
+          </div>
+        </div>
+        
+
+      </div>
+    </div>
+    <footer class="tm-footer row tm-mt-small">
+      
+<div class="col-12 font-weight-light">
+        
+<p class="text-center text-white mb-0 px-4 small">
+          Copyright�<b>2022</b> All rights reserved. 
+          
+          Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+        </p>
+      </div>
+    </footer>
+    
+<script src="js/jquery-3.3.1.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+    
+<script src="js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+    
+<script>
+      $(function() {
+        $(".tm-product-name").on("click", function() {
+          window.location.href = "edit-product.jsf";
+        });
+      });
+    </script>
+  
+</body></html>
